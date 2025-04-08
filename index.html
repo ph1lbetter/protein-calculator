@@ -113,8 +113,8 @@
 
       const age = parseInt(document.getElementById('age').value);
       const gender = document.getElementById('gender').value;
-      const height = parseFloat(document.getElementById('height').value); // now inches
-      const weight = parseFloat(document.getElementById('weight').value); // now pounds
+      const height = parseFloat(document.getElementById('height').value);
+      const weight = parseFloat(document.getElementById('weight').value);
       const lifting = parseInt(document.getElementById('lifting').value);
       const cardio = parseInt(document.getElementById('cardio').value);
 
@@ -134,18 +134,6 @@
         if (lifting <= 2) {
           minMultiplier = 0.6;
           maxMultiplier = 0.7;
-        } else if (lifting <= 4) {
-          minMultiplier = 0.8;
-          maxMultiplier = 0.9;
-        } else {
-          minMultiplier = 1.0;
-          maxMultiplier = 1.2;
-        }
-      }
-      } else {
-        if (lifting <= 2) {
-          minMultiplier = 0.6;
-          maxMultiplier = 0.6;
         } else if (lifting <= 4) {
           minMultiplier = 0.8;
           maxMultiplier = 0.9;
