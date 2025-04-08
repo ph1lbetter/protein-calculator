@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protein Calculator | Philip Olender</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      scroll-behavior: smooth;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center px-4 py-6">
+  <nav class="w-full max-w-4xl flex justify-between items-center py-4 px-6 mb-6">
+    <h1 class="text-xl font-bold">ProteinCalc</h1>
+    <div class="space-x-6">
+      <a href="#calculator" class="hover:underline">Calculator</a>
+      <a href="#foods" class="hover:underline">Suggested Foods</a>
+      <a href="#guide" class="hover:underline">Bulk/Cut Guide</a>
+    </div>
+  </nav>
+
+  <header class="text-center mb-12 fade-in">
+    <h1 class="text-5xl font-bold">Protein Intake Calculator</h1>
+    <p class="text-lg mt-2">Fuel your body. Optimize your gains.</p>
+  </header>
+
+  <section id="calculator" class="glass p-8 rounded-2xl shadow-xl w-full max-w-md fade-in">
+    <form id="proteinForm" class="space-y-6">
+      <div>
+        <label for="age" class="block text-sm font-medium">Age</label>
+        <input type="number" id="age" name="age" required min="2" max="99" class="mt-1 w-full px-3 py-2 bg-gray-100 text-black rounded" />
+      </div>
+
+      <div>
+        <label for="gender" class="block text-sm font-medium">Gender</label>
+        <select id="gender" name="gender" required class="mt-1 w-full px-3 py-2 bg-gray-100 text-black rounded">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="height" class="block text-sm font-medium">Height (cm)</label>
+        <input type="number" id="height" name="height" required min="100" max="250" class="mt-1 w-full px-3 py-2 bg-gray-100 text-black rounded" />
+      </div>
+
+      <div>
+        <label for="weight" class="block text-sm font-medium">Weight (kg)</label>
+        <input type="number" id="weight" name="weight" required min="30" max="250" class="mt-1 w-full px-3 py-2 bg-gray-100 text-black rounded" />
+      </div>
+
+      <div>
+        <label for="lifting" class="block text-sm font-medium">How many days a week do you lift?</label>
+        <input type="number" id="lifting" name="lifting" required min="0" max="7" class="mt-1 w-full px-3 py-2 bg-gray-100 text-black rounded" />
+      </div>
+
+      <div>
+        <label for="cardio" class="block text-sm font-medium">How many days a week do you do cardio?</label>
+        <input type="number" id="cardio" name="cardio" required min="0" max="7" class="mt-1 w-full px-3 py-2 bg-gray-100 text-black rounded" />
+        <p class="text-xs mt-1 text-gray-300 italic">Any day you perform cardiovascular activity, you should consume an additional 15g–25g of protein per 30–60 minutes of it.</p>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded transition">Calculate Protein</button>
+    </form>
+
+    <div id="result" class="mt-8 text-center hidden">
+      <h2 class="text-2xl font-bold mb-2">Recommended Protein Intake:</h2>
+      <p id="proteinAmount" class="text-lg"></p>
+    </div>
+  </section>
+
+  <section id="foods" class="w-full max-w-4xl mt-20 fade-in text-center">
+    <h2 class="text-3xl font-semibold mb-4">Suggested Foods</h2>
+    <p class="text-gray-300">(Coming soon) A breakdown of top foods for bulking and cutting, including protein-to-calorie ratios per 4oz serving.</p>
+  </section>
+
+  <section id="guide" class="w-full max-w-4xl mt-16 fade-in text-center">
+    <h2 class="text-3xl font-semibold mb-4">Bulking & Cutting Guide</h2>
+    <p class="text-gray-300">(Coming soon) Learn how to structure your nutrition, training, and recovery depending on your current goals.</p>
+  </section>
+
+  <footer class="mt-20 text-center text-sm text-gray-400">
+    <p>&copy; Philip Olender | <a href="https://github.com/ph1lbetter" class="underline hover:text-white">GitHub</a></p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('proteinForm');
+    const result = document.getElementById('result');
+    const proteinAmount = document.getElementById('proteinAmount');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const age = parseInt(document.getElementById('age').value);
+      const gender = document.getElementById('gender').value;
+      const height = parseFloat(document.getElementById('height').value);
+      const weight = parseFloat(document.getElementById('weight').value);
+      const lifting = parseInt(document.getElementById('lifting').value);
+      const cardio = parseInt(document.getElementById('cardio').value);
+
+      const weightInLbs = weight * 2.20462;
+
+      let minMultiplier, maxMultiplier;
+      if (gender === 'male') {
+        minMultiplier = 1.2;
+        maxMultiplier = 1.4;
+      } else {
+        minMultiplier = 1.0;
+        maxMultiplier = 1.2;
+      }
+
+      let baseMinProtein = weightInLbs * minMultiplier;
+      let baseMaxProtein = weightInLbs * maxMultiplier;
+
+      const minBoost = cardio * 15;
+      const maxBoost = cardio * 25;
+
+      const totalMinProtein = (baseMinProtein + minBoost).toFixed(1);
+      const totalMaxProtein = (baseMaxProtein + maxBoost).toFixed(1);
+
+      proteinAmount.textContent = `${totalMinProtein}g – ${totalMaxProtein}g of protein/day`;
+      result.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
