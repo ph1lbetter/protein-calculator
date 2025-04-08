@@ -143,6 +143,12 @@
         }
       }
 
+      // Adjust multipliers based on age group
+      if (age < 18 || age > 40) {
+        minMultiplier = Math.max(0, minMultiplier - 0.2);
+        maxMultiplier = Math.max(0, maxMultiplier - 0.2);
+      }
+
       let baseMinProtein = weight * minMultiplier;
       let baseMaxProtein = weight * maxMultiplier;
 
