@@ -120,11 +120,39 @@
 
       let minMultiplier, maxMultiplier;
       if (gender === 'male') {
-        minMultiplier = 1.2;
-        maxMultiplier = 1.4;
+        if (lifting <= 2) {
+          minMultiplier = 0.8;
+          maxMultiplier = 0.9;
+        } else if (lifting <= 4) {
+          minMultiplier = 1.0;
+          maxMultiplier = 1.1;
+        } else {
+          minMultiplier = 1.2;
+          maxMultiplier = 1.4;
+        }
       } else {
-        minMultiplier = 1.0;
-        maxMultiplier = 1.2;
+        if (lifting <= 2) {
+          minMultiplier = 0.6;
+          maxMultiplier = 0.7;
+        } else if (lifting <= 4) {
+          minMultiplier = 0.8;
+          maxMultiplier = 0.9;
+        } else {
+          minMultiplier = 1.0;
+          maxMultiplier = 1.2;
+        }
+      }
+      } else {
+        if (lifting <= 2) {
+          minMultiplier = 0.6;
+          maxMultiplier = 0.6;
+        } else if (lifting <= 4) {
+          minMultiplier = 0.8;
+          maxMultiplier = 0.9;
+        } else {
+          minMultiplier = 1.0;
+          maxMultiplier = 1.2;
+        }
       }
 
       let baseMinProtein = weight * minMultiplier;
