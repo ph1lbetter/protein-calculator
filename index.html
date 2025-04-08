@@ -130,13 +130,11 @@
       let baseMinProtein = weight * minMultiplier;
       let baseMaxProtein = weight * maxMultiplier;
 
-      const minBoost = cardio * 15;
-      const maxBoost = cardio * 25;
+      const totalMinProtein = baseMinProtein.toFixed(1);
+      const totalMaxProtein = baseMaxProtein.toFixed(1);
 
-      const totalMinProtein = (baseMinProtein + minBoost).toFixed(1);
-      const totalMaxProtein = (baseMaxProtein + maxBoost).toFixed(1);
-
-      proteinAmount.textContent = `${totalMinProtein}g – ${totalMaxProtein}g of protein/day`;
+      proteinAmount.innerHTML = `${totalMinProtein}g – ${totalMaxProtein}g of protein/day` +
+        `<p class='text-sm text-gray-300 italic mt-2'>Tip: On days you do cardio, aim to add 15g–25g of protein per 30–60 minutes of it.</p>`;
       result.classList.remove('hidden');
     });
   </script>
