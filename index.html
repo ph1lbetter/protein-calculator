@@ -75,8 +75,8 @@
       </div>
 
       <div>
-        <label for="cardio" class="block text-sm font-medium">How many days a week do you do cardio?</label>
-        <input type="number" id="cardio" name="cardio" required min="0" max="7" class="mt-1 w-full px-3 py-2 bg-gray-100 text-black rounded" />
+        $1
+<p class='text-xs mt-1 text-gray-300 italic'>Tip: Make sure to eat quality carbs on cardio days to fuel your performance and recovery.</p>
         
       </div>
 
@@ -157,7 +157,7 @@
 
       proteinAmount.innerHTML = `<strong>Recommended Protein Intake:</strong><br>${totalMinProtein}g – ${totalMaxProtein}g of protein/day` +
         `<br><strong>Recommended Protein Intake with Cardio Included:</strong><br>${(parseFloat(totalMinProtein) + 15).toFixed(1)}g – ${(parseFloat(totalMaxProtein) + 25).toFixed(1)}g` +
-        `<p class='text-sm text-gray-300 italic mt-2'>Recommended Protein Intake with Cardio Included:<br> <strong>${(parseFloat(totalMinProtein) + 15).toFixed(1)}g – ${(parseFloat(totalMaxProtein) + 25).toFixed(1)}g</strong>.</p>` +
+        `` +
         `<p class='text-sm text-gray-300 italic mt-1'>Tip: Make sure to eat quality carbs on cardio days to fuel your performance and recovery.</p>`;
       result.classList.remove('hidden');
     });
