@@ -156,9 +156,16 @@
       const totalMinProtein = baseMinProtein.toFixed(1);
       const totalMaxProtein = baseMaxProtein.toFixed(1);
 
-      proteinAmount.innerHTML = `<span class='block text-xl font-bold mt-2 mb-2'>${totalMinProtein}g – ${totalMaxProtein}g of protein/day</span>` +
-        `<div class='mt-6'><span class='block text-xl font-bold'>Recommended Protein Intake with Cardio Included:</span>
-        <span class='block text-xl font-bold bg-white text-black rounded px-4 py-2 inline-block mt-2'>${(parseFloat(totalMinProtein) + 15).toFixed(1)}g – ${(parseFloat(totalMaxProtein) + 25).toFixed(1)}g of protein/day</span></div>`;
+      proteinAmount.innerHTML = `
+        <span class='block text-xl font-bold bg-blue-500 text-white rounded px-4 py-2 inline-block mt-2 mb-2'>
+          ${totalMinProtein}g – ${totalMaxProtein}g of protein/day
+        </span>
+        <div class='mt-6'>
+          <span class='block text-xl font-bold mb-2'>Recommended Protein Intake with Cardio Included:</span>
+          <span class='block text-xl font-bold bg-blue-500 text-white rounded px-4 py-2 inline-block'>
+            ${(parseFloat(totalMinProtein) + 15).toFixed(1)}g – ${(parseFloat(totalMaxProtein) + 25).toFixed(1)}g of protein/day
+          </span>
+        </div>`;
       result.classList.remove('hidden');
     });
   </script>
