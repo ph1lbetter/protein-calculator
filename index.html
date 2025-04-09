@@ -155,8 +155,9 @@
       const totalMinProtein = baseMinProtein.toFixed(1);
       const totalMaxProtein = baseMaxProtein.toFixed(1);
 
-      proteinAmount.innerHTML = `${totalMinProtein}g – ${totalMaxProtein}g of protein/day` +
-        `<p class='text-sm text-gray-300 italic mt-2'>Tip: On days you do cardio, aim to add 15g–25g of protein per 30–60 minutes of it.</p>`;
+      proteinAmount.innerHTML = `<strong>Recommended Protein Intake:</strong><br>${totalMinProtein}g – ${totalMaxProtein}g of protein/day` +
+        `<p class='text-sm text-gray-300 italic mt-2'>Recommended Protein Intake with Cardio Included:<br> <strong>${(parseFloat(totalMinProtein) + 15).toFixed(1)}g – ${(parseFloat(totalMaxProtein) + 25).toFixed(1)}g</strong>.</p>` +
+        `<p class='text-sm text-gray-300 italic mt-1'>Tip: On days you do cardio, aim to add 15g–25g of protein per 30–60 minutes of it.</p>`;
       result.classList.remove('hidden');
     });
   </script>
