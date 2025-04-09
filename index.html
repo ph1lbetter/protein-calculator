@@ -156,10 +156,10 @@
       const totalMinProtein = baseMinProtein.toFixed(1);
       const totalMaxProtein = baseMaxProtein.toFixed(1);
 
-      proteinAmount.innerHTML = `<strong>Recommended Protein Intake:</strong><br>${totalMinProtein}g – ${totalMaxProtein}g of protein/day` +
-        `<br><strong>Recommended Protein Intake with Cardio Included:</strong><br>${(parseFloat(totalMinProtein) + 15).toFixed(1)}g – ${(parseFloat(totalMaxProtein) + 25).toFixed(1)}g` +
+      proteinAmount.innerHTML = `<strong>Recommended Protein Intake:</strong><br><span class='block mt-2 mb-4'>${totalMinProtein}g – ${totalMaxProtein}g of protein/day</span>` +
+        `<br><strong>Recommended Protein Intake with Cardio Included:</strong><br><span class='block mt-2'>${(parseFloat(totalMinProtein) + 15).toFixed(1)}g – ${(parseFloat(totalMaxProtein) + 25).toFixed(1)}g</span>` +
         `` +
-        `<p class='text-sm text-gray-300 italic mt-1'>Tip: Make sure to eat quality carbs on cardio days to fuel your performance and recovery.</p>`;
+        ``;
       result.classList.remove('hidden');
     });
   </script>
